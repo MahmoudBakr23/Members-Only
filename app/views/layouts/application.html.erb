@@ -6,10 +6,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <div class="container">
       <% if flash[:notice]%>
         <p class="notice"><%= notice %></p>
     <% end %>
@@ -17,5 +19,6 @@
         <p class="alert"><%= alert %></p>
     <%end%>
     <%= yield %>
+    </div>
   </body>
 </html>
