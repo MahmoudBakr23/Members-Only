@@ -31,10 +31,3 @@
 <br>
 
 <%= link_to '+', new_post_path, class: 'btn-floating btn-small waves-effect waves-light red'%>
-<% if member_signed_in? %>
-      <%= link_to current_member.name, edit_member_registration_path, class: 'waves-effect waves-teal btn-flat' %>
-      <%= link_to 'Logout', destroy_member_session_path, method: :delete, data: { confirm: "Are you sure you want to logout?" },class: 'waves-effect  green accent-2 btn-small' %>
-  <% else %>
-      <%= link_to 'Login', new_member_session_path,class: 'waves-effect  light-blue accent-3 btn-small' %>
-      <%= link_to 'Register', new_member_registration_path, class: 'waves-effect  green accent-2 btn-small'%>
-<% end %>
