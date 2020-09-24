@@ -13,10 +13,16 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <% if member_signed_in? %>
+        <td><strong> <%= post.member.name %> </strong></td><br />
+        <td><small> <%= post.member.username %> </small></td><br />
         <td><%= post.post %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+        <td><%= post.post %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -25,3 +31,10 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+<% if member_signed_in? %>
+      <%= link_to current_member.name, edit_member_registration_path %>
+      <%= link_to 'Logout', destroy_member_session_path, method: :delete, data: { confirm: "Are you sure you want to logout?" } %>
+  <% else %>
+      <%= link_to 'Sign In', new_member_session_path %>
+      <%= link_to 'Sign Up', new_member_registration_path %>
+<% end %>
