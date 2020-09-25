@@ -13,16 +13,14 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <% if member_signed_in? %>
-        <td><strong> <%= post.member.name %> </strong></td><br />
-        <td><small> <%= post.member.username %> </small></td><br />
-        <td><%= post.post %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-        <td><%= post.post %></td>
-        <% end %>
+        <strong><%= member_check?(post) %></strong><br />
+        <small><%= member_username_check?(post) %></small><br />
+        <hr>
+        <%= show_post?(post) %><br />
+        <hr>
+        <%= show_show?(post) %><br />
+        <%= show_edit?(post) %><br />
+        <%= show_destroy?(post) %><br />
       </tr>
     <% end %>
   </tbody>
